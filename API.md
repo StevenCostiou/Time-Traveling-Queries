@@ -1,3 +1,5 @@
+The `ProgramState` is a programming interface from an abstract object named "program state" or "state", that exposes execution data. The available API depends on the concrete "state" of the execution. The general execution data API is always available. The message send and assignment API are only available when a message send or an assignment are actually executed.
+
 
 ## Methods of the `ProgramState` API to obtain general execution data of the debugged program
 
