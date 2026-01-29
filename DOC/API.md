@@ -5,7 +5,7 @@ The `ProgramState` is a programming interface from an abstract object named "pro
 
 | Method | Description |
 |--------|-------------|
-| arguments: Array | Returns an array containing the objects in the arguments of the current activated method. |
+| `arguments:` Array | Returns an array containing the objects in the arguments of the current activated method. |
 | context: Context | Returns the suspended `Context` object, i.e., the context of the activated method at the top of the stack of the debugged process. |
 | isAssignment: Boolean | Returns true if the current bytecode instruction is an assignment, false otherwise. |
 | isMessageSend: Boolean | Returns true if the bytecode instruction is a message send, false otherwise. |
