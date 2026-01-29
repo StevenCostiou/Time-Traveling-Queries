@@ -16,5 +16,33 @@ Smalltalk boolean operators (`and:`, `or:`, `not`) and comparison operators (`=`
 
 ```smalltalk
 "A selection function that finds all states corresponding to message-sends with a selector #helloWorld."
-query select: [ :state | state isMessageSend and: [state selector == #helloWorld]].
+query select: [ :state | state isMessageSend and: [state messageSelector == #helloWorld]].
+```
+
+Selection functions can be implemented as classes.  In that case, they implement a method `value:` that takes the program state as input parameter and returns a boolean. The examples from above can be implemented in classes:
+
+```smalltalk
+SelectMessagesSends>>#value: state
+    ^state isMessageSend
+
+SelectMessagesSendsWithSelector>>#value: state
+    ^state isMessageSend
+        and: [state messageSelector = #helloWorld]
+```
+
+Selected function classes inherits from `SeekerSelectionFunction`. Selection function classes are regular classes, and can define their own methods and state that can be reused in the `#value:` interface:
+
+```smalltalk
+SeekerSelectionFunction subclass: #SelectMessageSends
+    instanceVariableNames: ''
+    classVariableNames: ''
+    package: 'MyPackage'.
+```
+
+These classes can just be instantiated and used:
+
+```smalltalk
+query := SelectMessageSends new.
+"...query configuration..."
+"...query execution..."
 ```
