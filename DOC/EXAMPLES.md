@@ -1,4 +1,5 @@
 
+## Full example: a query class finding all sends to `helloWorld`
 
 ```smalltalk
 "Define the SelectMessageSends class with a targetSelector instance variable"
