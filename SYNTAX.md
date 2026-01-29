@@ -17,6 +17,5 @@ Smalltalk boolean operators (`and:`, `or:`, `not`) and comparison operators (`=`
 
 ```smalltalk
 "A selection function that finds all states corresponding to message-sends with a selector #test."
-query select: [ :state | state isMessageSend 
-                            and: [state selector == #test]].
+query select: [ :state | state isMessageSend and: [state selector == #test]].
 ```
