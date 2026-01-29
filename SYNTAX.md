@@ -1,4 +1,3 @@
-`state` is an object implementing the `ProgramState` API, _i.e._, a `state` object can receive and answer any of the API methods described in [API.md](API.md).
 
 We focus on a specific part of the TTQ syntax that is the _selection function_. 
 
@@ -10,3 +9,14 @@ In the following script, we configure our query to select program states corresp
 ```smalltalk
 "A selection function that finds all states corresponding to message-sends."
 query select: [ :state | state isMessageSend ].
+```
+
+Inside a query, `state` is an object implementing the `ProgramState` API, _i.e._, a `state` object can receive and answer any of the API methods described in [API.md](API.md).
+
+Smalltalk boolean operators (`and:`, `or:`, `not`) and comparison operators (`=`, `==`, `~=`,  `<=`,  `>=`,  `<`,  `>`) may be used inside a query to combine [API.md](API.md) methods return values:
+
+```smalltalk
+"A selection function that finds all states corresponding to message-sends with a selector #test."
+query select: [ :state | state isMessageSend 
+                            and: [state selector == #test]].
+```
